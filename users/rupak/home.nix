@@ -21,9 +21,6 @@
     pinentry-qt
   ];
 
-  home.file = {
-  };
-
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
