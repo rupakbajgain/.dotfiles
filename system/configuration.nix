@@ -85,6 +85,8 @@
    git
    lutris
    kdePackages.discover
+   distrobox
+   podman
   ];
 
   # List services that you want to enable:

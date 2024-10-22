@@ -28,6 +28,12 @@
     # EDITOR = "emacs";
   };
 
+  programs.git={
+    enable=true;#install in user too to save these informations
+    userName="Rupak Bajgain";
+    userEmail="bajgainrupakb@gmail.com";
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
