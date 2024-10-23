@@ -18,12 +18,12 @@
       fsType = "ext4";
     };
 
-  fileSystems."/home/rupak/program" =
+  fileSystems."/home/rupak/Programs" =
     { device = "/dev/disk/by-uuid/6a2fd049-9ce5-45bc-9f58-1113b71fbf89";
       fsType = "ext4";
     };
 
-  fileSystems."/home/rupak/datas" =
+  fileSystems."/home/rupak/Datas" =
     { device = "/dev/disk/by-uuid/d7093b51-587f-44fd-86dd-05aba7df93a8";
       fsType = "ext4";
     };
