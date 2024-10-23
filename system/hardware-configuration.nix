@@ -18,6 +18,17 @@
       fsType = "ext4";
     };
 
+  fileSystems."/home/rupak/program" =
+    { device = "/dev/disk/by-uuid/6a2fd049-9ce5-45bc-9f58-1113b71fbf89";
+      fsType = "ext4";
+    };
+
+  fileSystems."/home/rupak/datas" =
+    { device = "/dev/disk/by-uuid/d7093b51-587f-44fd-86dd-05aba7df93a8";
+      fsType = "ext4";
+    };
+
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/1552-8DCF";
       fsType = "vfat";
