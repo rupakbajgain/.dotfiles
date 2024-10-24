@@ -19,7 +19,24 @@
     git-crypt
     gnupg
     pinentry-qt
+    bash-completion
+    bat
+    tree
+    unzip
+    fontconfig
+    starship
+    zoxide
+    fastfetch
+    neovim
   ];
+
+  home.file.".local/share/fonts/Meslo/MesloLGSNerdFontMono-Regular.ttf" = {
+    source = ./MesloLGSNerdFontMono-Regular.ttf;
+  };
+  home.file.".bashrc"={source=./mybash/.bashrc;};
+  home.file.".config/starship.toml"={source=./mybash/starship.toml;};
+  home.file.".config/fastfetch/config.jsonc"={source=./mybash/config.jsonc;};
+
 
   home.sessionVariables = {
     # EDITOR = "emacs";
