@@ -246,6 +246,17 @@ alias docker-clean=' \
 #######################################################
 # SPECIAL FUNCTIONS
 #######################################################
+crypt-init(){
+	if [ ! -d ".git" ]; then
+		git init
+	fi
+	echo "Creating encrypted folder .secrets"
+	git crypt unlock /home/rupak/Datas/keys/gitcrypt.key
+	echo ".secrets/** filter=git-crypt diff=git-crypt"> ./.gitattributes
+	mkdir -p .secrets
+}
+
+
 # Extracts any archive(s) (if unp isn't installed)
 extract() {
 	for archive in "$@"; do

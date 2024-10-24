@@ -45,6 +45,7 @@
     enable=true;#install in user too to save these informations
     userName="Rupak Bajgain";
     userEmail="bajgainrupakb@gmail.com";
+    extraConfig.init.defaultBranch = "main";
   };
 
   # Let Home Manager install and manage itself.
