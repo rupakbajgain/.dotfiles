@@ -375,6 +375,9 @@ distribution () {
             gentoo)
                 dtype="gentoo"
                 ;;
+			nixos)
+                dtype="nixos"
+                ;;
             arch|manjaro)
                 dtype="arch"
                 ;;
@@ -416,11 +419,11 @@ distribution () {
 
 
 DISTRIBUTION=$(distribution)
-if [ "$DISTRIBUTION" = "redhat" ] || [ "$DISTRIBUTION" = "arch" ]; then
+#if [ "$DISTRIBUTION" = "redhat" ] || [ "$DISTRIBUTION" = "arch" ]; then
       alias cat='bat'
-else
-      alias cat='batcat'
-fi 
+#else
+#      alias cat='batcat'
+#fi
 
 # Show the current version of the operating system
 ver() {

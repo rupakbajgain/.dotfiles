@@ -88,7 +88,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-   vim
+   neovim
    git
    lutris
    kdePackages.discover
@@ -112,12 +112,16 @@
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
-    driSupport=true;
-    driSupport32Bit=true;
+    #driSupport=true;
+    #driSupport32Bit=true;
   };
 
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia = {
+    open=true;
+
+  };
 
   hardware.nvidia.prime = {
     sync.enable = true;
@@ -137,4 +141,8 @@
 
   programs.steam.enable = true;
 
+  services.ollama = {
+    enable = true;
+    acceleration = "cuda";
+  };
 }

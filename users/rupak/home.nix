@@ -27,16 +27,15 @@
     starship
     zoxide
     fastfetch
-    neovim
   ];
 
   home.file.".local/share/fonts/Meslo/MesloLGSNerdFontMono-Regular.ttf" = {
     source = ./MesloLGSNerdFontMono-Regular.ttf;
   };
-  home.file.".bashrc"={source=./mybash/.bashrc;};
+  home.file.".bashrc"={source=./mybash/bashrc;};
   home.file.".config/starship.toml"={source=./mybash/starship.toml;};
   home.file.".config/fastfetch/config.jsonc"={source=./mybash/config.jsonc;};
-
+  home.file.".config/distrobox/distrobox.conf"={source=./distrobox.rc;};
 
   home.sessionVariables = {
     # EDITOR = "emacs";
