@@ -110,7 +110,7 @@
   system.stateVersion = "24.05";
 
   # Enable OpenGL
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     #driSupport=true;
     #driSupport32Bit=true;
@@ -144,5 +144,9 @@
   services.ollama = {
     enable = true;
     acceleration = "cuda";
+  };
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 80 5000 ];
   };
 }
