@@ -141,11 +141,10 @@
 
   programs.steam.enable = true;
 
-  services.ollama = {
-    enable = true;
-    acceleration = "cuda";
-  };
-  systemd.services.ollama.wantedBy = lib.mkForce [];
+  #services.ollama = {
+  #  enable = true;
+  #  acceleration = "cuda";
+  #};
 
   networking.firewall = {
     enable = true;
