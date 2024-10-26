@@ -79,7 +79,7 @@ if command -v rg &> /dev/null; then
     alias grep='rg'
 else
     # Alias grep to /usr/bin/grep with GREP_OPTIONS if ripgrep is not installed
-    alias grep="/usr/bin/grep $GREP_OPTIONS"
+    alias grep="grep $GREP_OPTIONS"
 fi
 unset GREP_OPTIONS
 
