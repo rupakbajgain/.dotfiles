@@ -145,6 +145,8 @@
     enable = true;
     acceleration = "cuda";
   };
+  systemd.services.ollama.wantedBy = lib.mkForce [];
+
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 80 5000 ];
