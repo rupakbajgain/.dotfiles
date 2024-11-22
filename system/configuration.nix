@@ -5,6 +5,7 @@
     [
       ./hardware-configuration.nix
       ./nbfc.nix
+      ./main-user.nix
     ];
 
   # Bootloader.
@@ -54,16 +55,8 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.rupak = {
-    isNormalUser = true;
-    description = "Rupak Bajgain";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      wget
-    #  kdePackages.kate
-    #  thunderbird
-    ];
-  };
+  main-user.enable = true;
+  main-user.userName = "rupak";
 
   # Install firefox.
   programs.firefox.enable = true;
