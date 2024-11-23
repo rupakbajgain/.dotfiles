@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ./nbfc.nix
       ./main-user.nix
+      ./web-setup.nix
     ];
 
   # Bootloader.
