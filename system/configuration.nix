@@ -9,9 +9,19 @@
       ./web-setup.nix
     ];
 
+  # Enable EnvFS
+  services.envfs.enable = true;
+
+  # Fix USB sticks not mounting or being listed:
+  services.devmon.enable = true;
+  services.udisks2.enable = true;
+  services.gvfs.enable = true;
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.kernel.sysctl."kernel.sysrq" = 1;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -54,6 +64,8 @@
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
   };
+
+  services.dbus.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   main-user.enable = true;
@@ -144,4 +156,11 @@
     enable = true;
     allowedTCPPorts = [ 80 5000 ];
   };
+
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+    options = "--delete-older-than 3d";
+  };
+
 }

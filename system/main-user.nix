@@ -18,7 +18,7 @@ in
         users.users.${cfg.userName} = {
             isNormalUser = true;
             initialPassword = "12345";
-            description = "main user";
+            description = "Rupak Bajgain";
             extraGroups = [ "networkmanager" "wheel" ];
             packages = with pkgs; [
                 wget
