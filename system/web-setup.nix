@@ -14,26 +14,27 @@ in
         virtualHosts.localhost = {
           # php files handling
           # this regex is mandatory because of the API
-          locations."~ ^.+?\.php(/.*)?$"={
+          locations."~ ^/${freshrss_url_path}/.+?\.php(/.*)?$"={
             root = "${freshrss_package}/p";
             extraConfig = ''
               fastcgi_pass unix:${config.services.phpfpm.pools.${freshrss_pool}.socket};
-              fastcgi_split_path_info ^(.+\.php)(/.*)$;
-              # By default, the variable PATH_INFO is not set under PHP-FPM
-              # But FreshRSS API greader.php need it. If you have a “Bad Request” error, double check this var!
-              # NOTE: the separate $path_info variable is required. For more details, see:
-              # https://trac.nginx.org/nginx/ticket/321
+              fastcgi_split_path_info ^/${freshrss_url_path}(/.+\.php)(/.*)?$;
               set $path_info $fastcgi_path_info;
               fastcgi_param PATH_INFO $path_info;
+              fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
               include ${pkgs.nginx}/conf/fastcgi_params;
               include ${pkgs.nginx}/conf/fastcgi.conf;
             '';
           };
 
-          locations."/" = {
+          locations."~ ^/${freshrss_url_path}(?!.*\.php)(/.*)?$" = {
             root = "${freshrss_package}/p";
-            tryFiles = "$uri $uri/ index.php";
+            tryFiles = "$1 /${freshrss_url_path}$1/index.php$is_args$args";
             index = "index.php index.html index.htm";
+          };
+
+          locations."/" = {
+            return = "301 /rss/";
           };
         };
       };
@@ -41,7 +42,7 @@ in
 #add services
     services.freshrss = {
       enable = true;
-      baseUrl = "http://localhost";#change this to tell the base url is new
+      baseUrl = "http://localhost/${freshrss_url_path}";#change this to tell the base url is new
       passwordFile = pkgs.writeText "password" "secret";
       virtualHost = null;#dont setup, use previous
       pool = freshrss_pool;
